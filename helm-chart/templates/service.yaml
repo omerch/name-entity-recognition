@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{include "python-ner-app.fullname" .}}
+  labels:
+    {{- include "python-ner-app.labels" . | nindent 4}}
+spec:
+  type: {{.Values.service.type}}
+  selector:
+    app: {{include "python-ner-app.name" .}}
+  ports:
+    - port: {{.Values.service.port}} # This is the port on the service itself
+      targetPort: {{.Values.containerPort}}  # Port exposed by the container

@@ -1,0 +1,12 @@
+replicaCount: 1
+
+service:
+  type: NodePort
+  port: 80
+
+image:
+  repository: textaitestcontainerregistery.azurecr.io/ner-service
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 8000

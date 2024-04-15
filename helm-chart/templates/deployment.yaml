@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{include "python-ner-app.fullname" .}}
+  labels: {{- include "python-ner-app.labels" . | nindent 4}}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{include "python-ner-app.name" .}}
+  template:
+    metadata:
+      labels:
+        app:  {{include "python-ner-app.name" .}}
+    spec:
+      containers:
+      - name: {{.Chart.Name}}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        ports:
+        - containerPort: {{.Values.containerPort}}
+        env:
+          - name: SECRET_KEY
+            value: "123"
+          - name: SERVICE_NAME
+            value: "123"
+      imagePullSecrets:
+      - name: acr-secrets
