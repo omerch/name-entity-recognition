@@ -1,6 +1,5 @@
-apiVersion: v2
-name: python-ner-app
+apiVersion: v2 # required
+name: python-ner-app # required
 description: A Helm chart for deploying the Python Sample App for Name Entity Recognition
 type: application
 version: 0.0.1
-appVersion: "0.0.1-SNAPSHOT"
