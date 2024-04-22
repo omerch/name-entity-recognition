@@ -1,4 +1,4 @@
-replicaCount: 3
+replicaCount: 1
 
 service:
   type: NodePort
@@ -8,5 +8,6 @@ image:
   repository: textaitestcontainerregistery.azurecr.io/ner-service
   tag: latest
   pullPolicy: IfNotPresent
+  imagePullSecrets: acr-secrets
 
 containerPort: 8000

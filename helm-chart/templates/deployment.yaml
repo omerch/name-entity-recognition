@@ -25,4 +25,4 @@ spec:
           - name: SERVICE_NAME
             value: "123"
       imagePullSecrets:
-      - name: acr-secrets
+      - name: {{ .Values.image.imagePullSecrets}}
